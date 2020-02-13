@@ -1,0 +1,63 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Post title</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">Innocent Zenda</a>
+            <div>
+                <ul class="navbar-nav mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'posts:post-list' %}">Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    {% block content %}
+        
+    {% endblock content %}
+
+    <footer class="bg-dark">
+        <div class="container text-light">
+            <div class="row">
+                <div class="col-6 py-3">
+                    <p class="lead">&copy; 2019 <a class="text-light" href="/">Innocent Zenda</a></p>
+                </div>
+                <div class="col-6 pt-2">
+                    <ul class="nav justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#" target="_blank">
+                                <i class="fa fa-2x fa-facebook" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="https://twitter.com/ZendaInnocent/" target="_blank">
+                                <i class="fa fa-2x fa-twitter" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="https://github.com/ZendaInnocent/" target="_blank">
+                                <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

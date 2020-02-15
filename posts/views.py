@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_list_or_404
+from django.shortcuts import render, get_list_or_404, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from posts.models import Post, Tag
@@ -19,6 +19,19 @@ class PostDetailView(DetailView):
 class PostCreateView(CreateView):
     form_class = PostCreateForm
     template_name = 'posts/post_form.html'
+
+
+class PostUpdateView(UpdateView):
+    model = Post
+    form_class = PostCreateForm
+    template_name = 'posts/post_update.html'
+
+
+class PostDeleteView(DeleteView):
+    model = Post
+    template_name = 'posts/post_delete.html'
+    success_url = '/'
+
 
 class TagDetailView(DetailView):
     model = Tag

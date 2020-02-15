@@ -25,7 +25,7 @@ SECRET_KEY = '-0tfdnni8^s9wrnj0py**%8n0h77c$-z7rj(m6i7@h7&%&qi80'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['zendainnocent.com', 'www.zendainnocent.com']
+ALLOWED_HOSTS = ['zendainnocent.com', 'www.zendainnocent.com', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [

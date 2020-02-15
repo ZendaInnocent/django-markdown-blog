@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 
 from posts.models import Post, Tag
+from posts.forms import PostCreateForm
 
 class PostsViewsTest(TestCase):
 
@@ -25,3 +26,19 @@ class PostsViewsTest(TestCase):
         response = self.client.get(reverse('posts:post-list'))
 
         self.assertEqual(response.status_code, 200)
+        # self.assertEqual(response.context, '')
+
+
+    def test_tag_detail_view_uses_correct_template(self):
+        tag = Tag.objects.create(name='django')
+
+        response = self.client.get(reverse('posts:tag-detail', kwargs={'slug':tag.slug}))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'posts/post_tag_detail.html')
+
+    
+    def test_post_create_view(self):
+        response = self.client.get(reverse('posts:post-create'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'posts/post_form.html')

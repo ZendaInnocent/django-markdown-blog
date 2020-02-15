@@ -9,3 +9,4 @@ media
 .coverage
 .vscode
 env/
+htmlcov/

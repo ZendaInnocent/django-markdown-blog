@@ -33,3 +33,13 @@ class PostModelTest(TestCase):
 
         self.assertIn(saved_tag1.name, 'first tag')
         self.assertIn(saved_tag2.name, 'second tag')
+
+
+    def test_string_representation_for_post(self):
+        post = Post.objects.create(title='The first post', content='The post detail')
+        self.assertEqual(str(post), post.title)
+
+
+    def test_string_representation_for_tag(self):
+        tag = Tag.objects.create(name='Django')
+        self.assertEqual(str(tag), tag.name)

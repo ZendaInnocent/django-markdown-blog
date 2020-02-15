@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_list_or_404
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from posts.models import Post, Tag
+from posts.forms import PostCreateForm
 
 
 class PostListView(ListView):
@@ -15,9 +16,13 @@ class PostDetailView(DetailView):
     template_name = 'posts/post_detail.html'
 
 
+class PostCreateView(CreateView):
+    form_class = PostCreateForm
+    template_name = 'posts/post_form.html'
+
 class TagDetailView(DetailView):
     model = Tag
-    template_name = 'posts/post_tag_list.html'
+    template_name = 'posts/post_tag_detail.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

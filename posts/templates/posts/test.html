@@ -1,0 +1,7 @@
+{% extends 'posts/base.html' %}
+{% load markdown_extras %}
+
+{% block content %}
+    {{ content | markdown | safe }}
+{% endblock content %}
+    

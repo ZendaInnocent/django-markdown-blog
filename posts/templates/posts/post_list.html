@@ -1,5 +1,6 @@
 {% extends 'posts/base.html' %}
 {% load static %}
+{% load markdown_extras %}
 
 
 {% block content %}
@@ -22,7 +23,7 @@
                                 </h4>
                             </a>
                             <p class="card-text">
-                                {{ post.content }}
+                                {{ post.content | markdown | safe }}
                             </p>
                         </div>
                     </div>

@@ -3,6 +3,8 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
+from mdeditor.fields import MDTextField
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=20)
@@ -20,7 +22,7 @@ class Tag(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
-    content = models.TextField()
+    content = MDTextField()
     thumbnail = models.ImageField(upload_to='thumbnails/', blank=True, null=True)
     tags = models.ManyToManyField(Tag)
     created_on = models.DateTimeField(auto_now_add=True)

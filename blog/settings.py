@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['zendainnocent.com', 'www.zendainnocent.com', 'localhost']
 
 INSTALLED_APPS = [
     'posts',
+    'mdeditor',
 
     'crispy_forms',
 
@@ -129,3 +130,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# mdeditor
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+

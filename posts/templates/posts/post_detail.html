@@ -1,5 +1,6 @@
 {% extends 'posts/base.html' %}
 {% load static %}
+{% load markdown_extras %}
 
 {% block content %}
     
@@ -20,30 +21,9 @@
                         <a href="{% url 'posts:post-delete' post.slug %}" class="btn btn-danger">Delete</a>
                     </div>
                 </div>
-                <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde suscipit iusto, vitae rerum odit fugiat repellat commodi enim corrupti in inventore reprehenderit neque, sed ratione ex quasi numquam quidem animi id ut error maxime ducimus. Ipsam vitae cupiditate alias ratione reprehenderit beatae facilis molestias perferendis debitis atque voluptates, animi itaque!
-                </p>
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos consectetur voluptatum sed, fuga esse unde soluta voluptas voluptates rerum hic!
-                </p>
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita omnis culpa voluptatem libero delectus velit consectetur iusto, temporibus quas aspernatur.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque ipsam possimus asperiores quibusdam inventore tempore assumenda soluta et delectus quas porro voluptatum minus tempora consequuntur hic, similique id maiores obcaecati!
-                </p>
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita omnis culpa voluptatem libero delectus velit consectetur iusto, temporibus quas aspernatur.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque ipsam possimus asperiores quibusdam inventore tempore assumenda soluta et delectus quas porro voluptatum minus tempora consequuntur hic, similique id maiores obcaecati!
-                </p>
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita omnis culpa voluptatem libero delectus velit consectetur iusto, temporibus quas aspernatur.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque ipsam possimus asperiores quibusdam inventore tempore assumenda soluta et delectus quas porro voluptatum minus tempora consequuntur hic, similique id maiores obcaecati!
-                </p>
+                <div>
+                    {{ post.content | markdown |safe }}
+                </div>
             </div>
             
         </div>

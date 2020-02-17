@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_list_or_404, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from posts.models import Post, Tag
 from posts.forms import PostCreateForm
@@ -16,21 +18,40 @@ class PostDetailView(DetailView):
     template_name = 'posts/post_detail.html'
 
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     form_class = PostCreateForm
     template_name = 'posts/post_form.html'
 
+    def test_func(self):
+        if self.request.user.is_authenticated and self.request.user.is_staff:
+            return True
+        return False
 
-class PostUpdateView(UpdateView):
+
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
     model = Post
     form_class = PostCreateForm
     template_name = 'posts/post_update.html'
+    success_message = 'Post updated successful.'
+
+    def test_func(self):
+        post = self.get_object()
+        if post.author.user == self.request.user:
+            return True
+        return False
 
 
-class PostDeleteView(DeleteView):
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
     model = Post
     template_name = 'posts/post_delete.html'
     success_url = '/'
+    success_message = 'Post deleted successful.'
+
+    def test_func(self):
+        post = self.get_object()
+        if post.author.user == self.request.user:
+            return True
+        return False
 
 
 class TagDetailView(DetailView):

@@ -10,3 +10,4 @@ media
 .vscode
 env/
 htmlcov/
+*.md

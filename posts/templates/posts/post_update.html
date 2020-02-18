@@ -1,6 +1,10 @@
 {% extends 'posts/base.html' %}
 {% load crispy_forms_tags %}
 
+{% block title %}
+    Update Post -
+{% endblock title %}
+
 {% block content %}
     <form action="" method="POST" class="col-md-8 offset-md-2 my-5">
         {% csrf_token %}

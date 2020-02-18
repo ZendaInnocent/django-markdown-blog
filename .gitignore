@@ -11,3 +11,4 @@ media
 env/
 htmlcov/
 *.md
+.env

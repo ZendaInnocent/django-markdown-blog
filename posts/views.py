@@ -35,8 +35,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixi
     success_message = 'Post updated successful.'
 
     def test_func(self):
-        post = self.get_object()
-        if post.author.user == self.request.user:
+        if self.request.user.is_authenticated and self.request.user.is_staff:
             return True
         return False
 
@@ -48,8 +47,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixi
     success_message = 'Post deleted successful.'
 
     def test_func(self):
-        post = self.get_object()
-        if post.author.user == self.request.user:
+        if self.request.user.is_authenticated and self.request.user.is_staff:
             return True
         return False
 

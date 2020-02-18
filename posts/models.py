@@ -31,7 +31,6 @@ class Post(models.Model):
     slug = models.SlugField(unique=True)
     content = MDTextField()
     thumbnail = models.ImageField(upload_to='thumbnails/', blank=True, null=True)
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)

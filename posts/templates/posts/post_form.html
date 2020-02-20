@@ -4,6 +4,7 @@
 {% block content %}
     <form action="" method="POST" class="col-md-8 offset-md-2 my-5">
         {% csrf_token %}
+        {{ form.media }}
         {{ form | crispy }}
         <button class="btn btn-primary">Create Post</button>
     </form>

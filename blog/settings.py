@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 from decouple import config
+from django.conf import settings
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,9 +25,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', cast=bool)
 
-if DEBUG == False:
+if settings.DEBUG == False:
     ALLOWED_HOSTS = config('ALLOWED_HOSTS')
 else:
     ALLOWED_HOSTS = []
@@ -35,6 +36,7 @@ else:
 
 INSTALLED_APPS = [
     'posts',
+    'accounts',
     'mdeditor',
     'crispy_forms',
     'django.contrib.admin',
@@ -79,7 +81,7 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-if DEBUG:
+if settings.DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -98,6 +100,7 @@ else:
         }
     }
 
+print(settings.DATABASES)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -153,3 +156,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # mdeditor
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

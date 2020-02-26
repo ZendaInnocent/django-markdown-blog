@@ -8,7 +8,7 @@ from fabric.contrib.files import exists, append
 REPO_URL = 'https://github.com/ZendaInnocent/personal-blog.git'
 
 def deploy():
-    site_folder = '/home/zendainn/personal-website/'
+    site_folder = '/home/zendainn/django-markdown-blog/'
     
     with cd(site_folder):
         _get_latest_source()

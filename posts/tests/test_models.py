@@ -43,3 +43,19 @@ class PostModelTest(TestCase):
     def test_string_representation_for_tag(self):
         tag = Tag.objects.create(name='Django')
         self.assertEqual(str(tag), tag.name)
+
+    
+    def test_post_get_absolute_url(self):
+        post = Post.objects.create(title='Post one', content='The post detail')
+
+        self.assertEqual(post.get_absolute_url(), '/post/post-one/')
+        
+    def test_post_get_update_url(self):
+        post = Post.objects.create(title='Post one', content='The post detail')
+
+        self.assertEqual(post.get_update_url(), '/post/post-one/update/')
+        
+    def test_post_get_delete_url(self):
+        post = Post.objects.create(title='Post one', content='The post detail')
+
+        self.assertEqual(post.get_delete_url(), '/post/post-one/delete/')

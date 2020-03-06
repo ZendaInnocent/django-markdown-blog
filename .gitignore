@@ -7,8 +7,8 @@ db.sqlite3
 db.sqlite3-journal
 media
 .coverage
+.coveragerc
 .vscode
 env/
 htmlcov/
-*.md
 .env

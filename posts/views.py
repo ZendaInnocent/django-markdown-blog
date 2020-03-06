@@ -61,10 +61,3 @@ class TagDetailView(DetailView):
         tag = Tag.objects.get(slug=self.kwargs['slug'])
         context['object_list'] = tag.post_set.all()
         return context
-
-def content_view(request):
-    return render(request, 'posts/test.html', {'content':
-        '# this is test title\n' + 
-        '- list 1\n' +
-        '- list 2\n'
-    })

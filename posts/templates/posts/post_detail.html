@@ -25,6 +25,9 @@
                         <a href="{% url 'posts:post-delete' post.slug %}" class="btn btn-danger">Delete</a>
                     </div>
                 </div>
+                <div class="py-3 excerpt">
+                    <b>{{ post.excerpt }}</b>
+                </div>
                 <div>
                     {{ post.content | markdown |safe }}
                 </div>

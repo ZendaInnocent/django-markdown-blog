@@ -57,3 +57,7 @@ p code {
 	border-radius: 5px;
 	color: #333;
 }
+
+.excerpt {
+	font-size: 1.3rem;
+}

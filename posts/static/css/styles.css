@@ -37,3 +37,9 @@ body {
 	border-radius: 5px;
 	text-decoration: none;
 }
+
+.codehilite {
+	padding: 1em;
+	border-radius: 10px;
+	background: #eee;
+}

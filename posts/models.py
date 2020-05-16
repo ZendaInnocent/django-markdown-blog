@@ -22,15 +22,17 @@ class Tag(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
+    excerpt = models.TextField(max_length=100)
     content = MDTextField()
     thumbnail = models.ImageField(upload_to='thumbnails/', blank=True, null=True)
     tags = models.ManyToManyField(Tag)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     prev_post = models.ForeignKey(
-        'self', related_name='previous_post', on_delete=models.SET_NULL, null=True, blank=True)
+        'self', related_name='previous_post', on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Previous Post')
     nxt_post = models.ForeignKey(
-        'self', related_name='next_post', on_delete=models.SET_NULL, null=True, blank=True)
+        'self', related_name='next_post', on_delete=models.SET_NULL, null=True, blank=True,
+        verbose_name='Next Post')
 
     def __str__(self):
         return self.title

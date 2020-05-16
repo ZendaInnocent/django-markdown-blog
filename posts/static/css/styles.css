@@ -48,3 +48,11 @@ img {
 	border-radius: 10px;
 	background: #eee;
 }
+
+p code {
+	background: #ddd;
+	display: inline;
+	padding: 0.3em 0.5em;
+	border-radius: 5px;
+	color: #333;
+}

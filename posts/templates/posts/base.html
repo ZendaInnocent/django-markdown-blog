@@ -19,6 +19,12 @@
             <a class="navbar-brand" href="/">Innocent Zenda</a>
             <div>
                 <ul class="navbar-nav mt-2 mt-lg-0">
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link 
+                        {% if request.path == '/post/create/' %}active{% endif %}" href="{% url 'posts:post-create' %}">Create Post</a>
+                    </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link active" href="{% url 'posts:post-list' %}">Blog</a>
                     </li>
@@ -43,31 +49,10 @@
         
     {% endblock content %}
 
-    <footer class="bg-dark">
+    <footer class="bg-dark py-3">
         <div class="container text-light">
-            <div class="row">
-                <div class="col-6 py-3">
-                    <p class="lead">&copy; 2019 - 2020 <a class="text-light" href="/">Innocent Zenda</a></p>
-                </div>
-                <div class="col-6 pt-2">
-                    <ul class="nav justify-content-end">
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="#" target="_blank">
-                                <i class="fa fa-2x fa-facebook" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="https://twitter.com/ZendaInnocent/" target="_blank">
-                                <i class="fa fa-2x fa-twitter" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="https://github.com/ZendaInnocent/" target="_blank">
-                                <i class="fa fa-2x fa-github" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="text-center">
+                <p class="lead">&copy; 2019-2020 <a class="text-light" href="/">Innocent Zenda</a></p>
             </div>
         </div>
     </footer>

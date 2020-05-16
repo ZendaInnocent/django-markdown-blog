@@ -44,9 +44,10 @@ img {
 }
 
 .codehilite {
-	padding: 1em;
+	padding: 1em 1em 0.1em;
 	border-radius: 10px;
 	background: #eee;
+	margin-bottom: 1em;
 }
 
 p code {

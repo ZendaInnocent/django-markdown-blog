@@ -16,8 +16,14 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="/">Innocent Zenda</a>
-            <div>
+            <a class="navbar-brand" href="/">
+                <h1>Innocent Zenda</h1>
+            </a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav mt-2 mt-lg-0">
                     {% if request.user.is_authenticated %}
                     <li class="nav-item">
@@ -56,6 +62,10 @@
             </div>
         </div>
     </footer>
+
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
 </body>
 </html>

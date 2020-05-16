@@ -150,6 +150,12 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # mdeditor
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+MDEDITOR_CONFIGS = {
+    'default': {
+        'lineWrapping': True,
+    }
+}
+
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'

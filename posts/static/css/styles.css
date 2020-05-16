@@ -1,23 +1,39 @@
+@font-face {
+	font-family: "PT-Sans-Bold";
+	src: url(../fonts/PT_Sans-Web-Bold.ttf);
+}
+  
+@font-face {
+	font-family: "PT-Sans-Regular";
+	src: url(../fonts/PT_Sans-Web-Regular.ttf);
+}
+  
+@font-face {
+	font-family: "PT-Sans-Italic";
+	src: url(../fonts/PT_Sans-Web-Italic.ttf);
+}
+
 body {
-  line-height: 1.5 !important;
-  font-size: 1.2rem !important;
+	font-family: "PT-Sans-Regular";
+	line-height: 1.5 !important;
+	font-size: 1.2rem !important;
 }
 
 .article {
-  max-width: 800px;
-  margin: auto;
+	max-width: 800px;
+	margin: auto;
 }
 
 .tags a {
-  color: #333;
-  background-color: #ddd;
-  border-radius: 5px;
-  font-size: 1rem;
+	color: #333;
+	background-color: #ddd;
+	border-radius: 5px;
+	font-size: 1rem;
 }
 
 .tags a:hover {
-  color: #333;
-  background-color: #ddd;
-  border-radius: 5px;
-  text-decoration: none;
+	color: #333;
+	background-color: #ddd;
+	border-radius: 5px;
+	text-decoration: none;
 }

@@ -25,19 +25,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', cast=bool)
+DEBUG = config('DEBUG', cast=bool, default=False)
 
-if not settings.DEBUG:
-    ALLOWED_HOSTS = config('ALLOWED_HOST')
-else:
-    ALLOWED_HOSTS = []
-    
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [
+                       s.strip() for s in v.split(',')])
+
 # Application definition
 
 INSTALLED_APPS = [
     'posts',
+
     'mdeditor',
     'crispy_forms',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 
-## If you are using different databases for development and production.
+# If you are using different databases for development and production.
 
 if not settings.DEBUG:
     DATABASES = {

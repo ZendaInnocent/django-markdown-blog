@@ -1,7 +1,7 @@
 Django==3.0.3
 django-crispy-forms==1.8.1
 django-mdeditor==0.1.17
-Pillow==7.0.0
+Pillow==7.1.0
 django-decouple==2.1
 Markdown==3.2.1
 Pygments===2.6.1

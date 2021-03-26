@@ -37,6 +37,7 @@ INSTALLED_APPS = [
 
     'mdeditor',
     'crispy_forms',
+    'comment',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -156,7 +157,7 @@ MDEDITOR_CONFIGS = {
     }
 }
 
-LOGIN_URL = 'login'
+LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 

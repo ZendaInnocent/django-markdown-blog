@@ -1,2 +1,0 @@
--r requirements.common.txt
-mysqlclient==1.4.6

@@ -168,3 +168,17 @@ if not DEBUG:
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+    EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_email')
+
+COMMENT_FLAGS_ALLOWED = 3
+
+COMMENT_SHOW_FLAGGED = True
+
+COMMENT_FLAG_REASONS = [
+    (1, ('Spam | Exist only to promote a service')),
+    (2, ('Abusive | Intended at promoting hatred')),
+    (3, ('Racist | Sick Mentality')),
+]
+
+COMMENT_ALLOW_ANONYMOUS = True

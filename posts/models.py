@@ -1,8 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from django.contrib.auth.models import User
-from django.template.defaultfilters import slugify
-
+from django.utils.text import slugify
 from mdeditor.fields import MDTextField
 
 
@@ -24,22 +22,24 @@ class Post(models.Model):
     slug = models.SlugField(unique=True)
     excerpt = models.TextField(max_length=100)
     content = MDTextField()
-    thumbnail = models.ImageField(upload_to='thumbnails/', blank=True, null=True)
+    thumbnail = models.ImageField(upload_to='thumbnails/', blank=True,
+                                  null=True)
     tags = models.ManyToManyField(Tag)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     prev_post = models.ForeignKey(
-        'self', related_name='previous_post', on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Previous Post')
+        'self', related_name='previous_post', on_delete=models.SET_NULL,
+        null=True, blank=True, verbose_name='Previous Post')
     nxt_post = models.ForeignKey(
-        'self', related_name='next_post', on_delete=models.SET_NULL, null=True, blank=True,
-        verbose_name='Next Post')
+        'self', related_name='next_post', on_delete=models.SET_NULL, null=True,
+        blank=True, verbose_name='Next Post')
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
         return reverse('posts:post-detail', kwargs={'slug': self.slug})
-  
+
     def get_update_url(self):
         return reverse('posts:post-update', kwargs={'slug': self.slug})
 

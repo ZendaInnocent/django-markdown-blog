@@ -2,15 +2,14 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    Update Post -
+Update Post - {{ block.super }}
 {% endblock title %}
 
 {% block content %}
-    <form action="" method="POST" class="col-md-8 offset-md-2 my-5">
-        {% csrf_token %}
-        {{ form.media }}
-        {{ form | crispy }}
-        <button class="btn btn-primary">Update Post</button>
-    </form>
+<form action="" method="POST" class="col-md-8 offset-md-2 my-5">
+  {% csrf_token %}
+  {{ form.media }}
+  {{ form | crispy }}
+  <button class="btn btn-primary">Update Post</button>
+</form>
 {% endblock content %}
-    

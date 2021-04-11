@@ -2,22 +2,20 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    Login 
+Login - {{ block.super }}
 {% endblock title %}
 
 {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 offset-md-3 my-5 card p-3">
-            <h3 class="pb-3 text-center">Log in here</h3>
-            <form class="p-2" method="POST">
-                {% csrf_token %}
-                {{ form | crispy }}
-                <button class="btn btn-primary">Login</button>
-            </form>
-        </div>
+  <div class="row">
+    <div class="col-md-6 offset-md-3 my-5 card p-3">
+      <h3 class="pb-3 text-center">Log in here</h3>
+      <form class="p-2" method="POST">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <button class="btn btn-primary">Login</button>
+      </form>
     </div>
+  </div>
 </div>
 {% endblock content %}
-    
-    

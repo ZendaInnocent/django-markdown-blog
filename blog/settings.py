@@ -182,3 +182,5 @@ COMMENT_FLAG_REASONS = [
 ]
 
 COMMENT_ALLOW_ANONYMOUS = True
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

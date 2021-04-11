@@ -2,37 +2,36 @@
 {% load static %}
 {% load markdown_extras %}
 
-
 {% block content %}
 
-    <div class="container py-5">
-        <div class="main">
-            <div class="row">
-                {% for post in object_list %}
-                <div class="col-lg-4 col-md-6 mb-3">
-                    <div class="card">
-                        <a href="{{ post.get_absolute_url }}">
-                            {% if post.thumbnail %}
-                            <img class="card-img-top" src="{{ post.thumbnail.url }}" alt="{{post.title}} thumbnail">
-                            {% endif %}
-                        </a>
-                        <div class="card-body">
-                            <a href="{{ post.get_absolute_url }}">
-                                <h4 class="card-title">
-                                    {{ post.title }}
-                                </h4>
-                            </a>
-                            {% if post.excerpt %}
-                            <p class="card-text">
-                                {{ post.excerpt }}
-                            </p>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
+<div class="container py-5">
+  <div class="main">
+    <div class="row">
+      {% for post in object_list %}
+      <div class="col-lg-4 col-md-6 mb-3">
+        <div class="card">
+          <a href="{{ post.get_absolute_url }}">
+            {% if post.thumbnail %}
+            <img class="card-img-top" src="{{ post.thumbnail.url }}" alt="{{post.title}} thumbnail">
+            {% endif %}
+          </a>
+          <div class="card-body">
+            <a href="{{ post.get_absolute_url }}">
+              <h4 class="card-title">
+                {{ post.title }}
+              </h4>
+            </a>
+            {% if post.excerpt %}
+            <p class="card-text">
+              {{ post.excerpt }}
+            </p>
+            {% endif %}
+          </div>
         </div>
+      </div>
+      {% endfor %}
     </div>
-    
+  </div>
+</div>
+
 {% endblock content %}

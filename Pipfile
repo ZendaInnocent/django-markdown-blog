@@ -16,6 +16,7 @@ django-comments-dab = "*"
 [dev-packages]
 pycodestyle = "*"
 autopep8 = "*"
+coverage = "*"
 
 [requires]
 python_version = "3.9"

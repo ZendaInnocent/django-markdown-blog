@@ -1,18 +1,16 @@
 {% extends 'posts/base.html' %}
 
 {% block title %}
-    Delete Post -
+Delete Post - {{ block.super }}
 {% endblock title %}
-    
 
 {% block content %}
 <div class="container my-5">
-    <form method="POST">
-        {% csrf_token %}
-        <p>You want to delete {{ object }}?</p>
-        <a href="/" class="btn btn-secondary">No</a>
-        <button class="btn btn-danger">Yes, Delete</button>
-    </form>
+  <form method="POST">
+    {% csrf_token %}
+    <p>You want to delete {{ object }}?</p>
+    <a href="/" class="btn btn-secondary">No</a>
+    <button class="btn btn-danger">Yes, Delete</button>
+  </form>
 </div>
 {% endblock content %}
-    

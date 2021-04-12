@@ -56,7 +56,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin,
 
 class TagDetailView(DetailView):
     model = Tag
-    template_name = 'posts/post_tag_detail.html'
+    template_name = 'posts/post_list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

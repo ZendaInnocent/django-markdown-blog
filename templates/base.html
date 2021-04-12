@@ -1,5 +1,4 @@
 {% load static %}
-{% load crispy_forms_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +18,7 @@
     <nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
       <div class="container">
         <a class="navbar-brand" href="/">
-          <h1>Elegant Tech</h1>
+          <h1>Innocent Zenda</h1>
         </a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
           aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +43,8 @@
 
     {% if messages %}
     {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} pt-2 article alert-dismissible fade show" role="alert">
+    <div class="alert alert-{% if message.tags == 'error' %}danger {% else %}
+           {{ message.tags }} {% endif %} pt-2 article alert-dismissible fade show" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         <span class="sr-only">Close</span>

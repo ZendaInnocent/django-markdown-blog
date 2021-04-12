@@ -8,7 +8,7 @@ class PostCreateForm(forms.ModelForm):
         attrs={
             'rows': 3,
             'placeholder': ('Enter a short description about the post'
-                            'to be shown on post list page')
+                            ' to be shown on post list page')
         }))
 
     class Meta:

@@ -1,4 +1,4 @@
-{% extends 'posts/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% load markdown_extras %}
 {% load comment_tags %}
@@ -21,10 +21,12 @@
           </a>
           {% endfor %}
         </div>
+        {% if request.user.is_authenticated %}
         <div class="col-6 text-right">
           <a href="{% url 'posts:post-update' post.slug %}" class="mr-2 btn btn-success">Update</a>
           <a href="{% url 'posts:post-delete' post.slug %}" class="btn btn-danger">Delete</a>
         </div>
+        {% endif %}
       </div>
       <div class="py-3 excerpt">
         <b>{{ post.excerpt }}</b>

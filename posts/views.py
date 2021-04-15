@@ -1,6 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.http.response import HttpResponseBadRequest
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
 
@@ -19,61 +18,43 @@ class PostDetailView(DetailView):
     template_name = 'posts/post_detail.html'
 
 
-class PostCreateView(LoginRequiredMixin, UserPassesTestMixin,
-                     SuccessMessageMixin, CreateView):
+class CreateUpdateMixin(LoginRequiredMixin, UserPassesTestMixin,
+                        SuccessMessageMixin):
+    def form_valid(self, form):
+        action = self.request.POST.get('action')
+        if action == 'SAVE':
+            return super().form_valid(form)
+        elif action == 'PREVIEW':
+            preview = Post(
+                title=form.cleaned_data['title'],
+                excerpt=form.cleaned_data['excerpt'],
+                content=form.cleaned_data['content'],
+                # tags=form.cleaned_data['tags'],
+            )
+            context = self.get_context_data(preview=preview)
+            return self.render_to_response(context=context)
+
+    def test_func(self):
+        if self.request.user.is_authenticated and self.request.user.is_staff:
+            return True
+        return False
+
+
+class PostCreateView(CreateUpdateMixin, CreateView):
     form_class = PostCreateForm
     success_message = 'Post created successful'
     extra_context = {
         'title': 'Create Post'
     }
 
-    def form_valid(self, form):
-        action = self.request.POST.get('action')
-        if action == 'SAVE':
-            return super().form_valid(form)
-        elif action == 'PREVIEW':
-            preview = Post(
-                title=form.cleaned_data['title'],
-                excerpt=form.cleaned_data['excerpt'],
-                content=form.cleaned_data['content'],
-                # tags=form.cleaned_data['tags'],
-            )
-            context = self.get_context_data(preview=preview)
-            return self.render_to_response(context=context)
 
-    def test_func(self):
-        if self.request.user.is_authenticated and self.request.user.is_staff:
-            return True
-        return False
-
-
-class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin,
-                     SuccessMessageMixin, UpdateView):
+class PostUpdateView(CreateUpdateMixin, UpdateView):
     model = Post
     form_class = PostCreateForm
     success_message = 'Post updated successful.'
     extra_context = {
         'title': 'Update Post'
     }
-
-    def form_valid(self, form):
-        action = self.request.POST.get('action')
-        if action == 'SAVE':
-            return super().form_valid(form)
-        elif action == 'PREVIEW':
-            preview = Post(
-                title=form.cleaned_data['title'],
-                excerpt=form.cleaned_data['excerpt'],
-                content=form.cleaned_data['content'],
-                # tags=form.cleaned_data['tags'],
-            )
-            context = self.get_context_data(preview=preview)
-            return self.render_to_response(context=context)
-
-    def test_func(self):
-        if self.request.user.is_authenticated and self.request.user.is_staff:
-            return True
-        return False
 
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin,

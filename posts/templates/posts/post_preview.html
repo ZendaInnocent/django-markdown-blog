@@ -1,0 +1,24 @@
+{% load markdown_extras %}
+<div class="col-md-8 offset-md-2 my-3">
+  <h3>Post Preview</h3>
+  <div class="card p-3">
+    <h1>{{ post.title }}</h1>
+    <div class="row py-3">
+      <div class="tags col-6">
+        {% comment %}
+        {% for tag in post.tags.all %}
+        <a class="mr-2 p-2" href="{% url 'posts:tag-detail' tag.slug %}">
+          {{ tag }}
+        </a>
+        {% endfor %}
+        {% endcomment %}
+      </div>
+    </div>
+    <div class="py-3 excerpt">
+      <b>{{ post.excerpt }}</b>
+    </div>
+    <div>
+      {{ post.content | markdown |safe }}
+    </div>
+  </div>
+</div>

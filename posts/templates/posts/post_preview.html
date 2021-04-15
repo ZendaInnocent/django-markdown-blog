@@ -1,8 +1,12 @@
+{% extends 'base.html' %}
 {% load markdown_extras %}
+
+{% block content %}
+
 <div class="col-md-8 offset-md-2 my-3">
   <h3>Post Preview</h3>
   <div class="card p-3">
-    <h1>{{ post.title }}</h1>
+    <h1>{{ preview.title }}</h1>
     <div class="row py-3">
       <div class="tags col-6">
         {% comment %}
@@ -15,10 +19,12 @@
       </div>
     </div>
     <div class="py-3 excerpt">
-      <b>{{ post.excerpt }}</b>
+      <b>{{ preview.excerpt }}</b>
     </div>
     <div>
-      {{ post.content | markdown |safe }}
+      {{ preview.content | markdown |safe }}
     </div>
   </div>
 </div>
+
+{% endblock content %}

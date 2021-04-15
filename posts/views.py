@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import render
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
 
@@ -29,10 +30,9 @@ class CreateUpdateMixin(LoginRequiredMixin, UserPassesTestMixin,
                 title=form.cleaned_data['title'],
                 excerpt=form.cleaned_data['excerpt'],
                 content=form.cleaned_data['content'],
-                # tags=form.cleaned_data['tags'],
             )
             context = self.get_context_data(preview=preview)
-            return self.render_to_response(context=context)
+            return render(self.request, 'posts/post_preview.html', context)
 
     def test_func(self):
         if self.request.user.is_authenticated and self.request.user.is_staff:
@@ -42,6 +42,7 @@ class CreateUpdateMixin(LoginRequiredMixin, UserPassesTestMixin,
 
 class PostCreateView(CreateUpdateMixin, CreateView):
     form_class = PostCreateForm
+    template_name = 'posts/post_form.html'
     success_message = 'Post created successful'
     extra_context = {
         'title': 'Create Post'

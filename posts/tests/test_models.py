@@ -1,13 +1,14 @@
 from django.test import TestCase
-
 from posts.models import Post, Tag
 
 
 class PostModelTest(TestCase):
 
     def test_saving_and_retrieving_posts(self):
-        first_post = Post.objects.create(title='Post 1', content='The post detail')
-        second_post = Post.objects.create(title='Post 2', content='The post detail')
+        first_post = Post.objects.create(
+            title='Post 1', content='The post detail')
+        second_post = Post.objects.create(
+            title='Post 2', content='The post detail')
 
         saved_posts = Post.objects.all()
 
@@ -18,7 +19,6 @@ class PostModelTest(TestCase):
 
         self.assertIn(first_saved_post.title, 'Post 1')
         self.assertIn(second_saved_post.title, 'Post 2')
-
 
     def test_saving_retrieving_tags(self):
         tag1 = Tag.objects.create(name='first tag')
@@ -34,27 +34,25 @@ class PostModelTest(TestCase):
         self.assertIn(saved_tag1.name, 'first tag')
         self.assertIn(saved_tag2.name, 'second tag')
 
-
     def test_string_representation_for_post(self):
-        post = Post.objects.create(title='The first post', content='The post detail')
+        post = Post.objects.create(
+            title='The first post', content='The post detail')
         self.assertEqual(str(post), post.title)
-
 
     def test_string_representation_for_tag(self):
         tag = Tag.objects.create(name='Django')
         self.assertEqual(str(tag), tag.name)
 
-    
     def test_post_get_absolute_url(self):
         post = Post.objects.create(title='Post one', content='The post detail')
 
         self.assertEqual(post.get_absolute_url(), '/post/post-one/')
-        
+
     def test_post_get_update_url(self):
         post = Post.objects.create(title='Post one', content='The post detail')
 
         self.assertEqual(post.get_update_url(), '/post/post-one/update/')
-        
+
     def test_post_get_delete_url(self):
         post = Post.objects.create(title='Post one', content='The post detail')
 

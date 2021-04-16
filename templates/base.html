@@ -28,13 +28,12 @@
           <ul class="navbar-nav mt-2 mt-lg-0">
             {% if request.user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link
-                        {% if request.path == '/post/create/' %}active{% endif %}"
+              <a class="nav-link {% if request.path == '/post/create/' %}active{% endif %}"
                 href="{% url 'posts:post-create' %}">Create Post</a>
             </li>
             {% endif %}
             <li class="nav-item">
-              <a class="nav-link active" href="{% url 'posts:post-list' %}">Blog</a>
+              <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Blog</a>
             </li>
           </ul>
         </div>

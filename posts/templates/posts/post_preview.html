@@ -3,7 +3,6 @@
 
 {% block content %}
 
-<div class="col-md-8 offset-md-2 my-3">
   <h3>Post Preview</h3>
   <div class="card p-3">
     <h1>{{ preview.title }}</h1>
@@ -25,6 +24,5 @@
       {{ preview.content | markdown |safe }}
     </div>
   </div>
-</div>
 
 {% endblock content %}

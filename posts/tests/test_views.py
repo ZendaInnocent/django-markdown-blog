@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
-from django.test import TestCase
+from django.test import RequestFactory, TestCase
 from django.urls import reverse
+from posts import views
 from posts.models import Post, Tag
 
 
@@ -105,3 +106,17 @@ class PostsViewsTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'posts/post_list.html')
+
+    def test_form_valid_method(self):
+        """Test for `form_valid` method in `CreateUpdateMixin`"""
+        request = RequestFactory().post('/post/create', {
+            'title': 'sample post title',
+            'excerpt': 'some exceodfo',
+            'content': 'here goes the contents',
+            'action': 'PREVIEW',
+        })
+        request.user = self.staff_user
+        response = views.PostCreateView.as_view()(request)
+
+        self.assertEqual(response.status_code, 200)
+        # todo: add more assertions

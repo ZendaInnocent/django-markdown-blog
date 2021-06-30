@@ -36,3 +36,11 @@ function handleCopyClick(e) {
   const { innerText } = Array.from(children)[0];
   copyToClipboard(innerText);
 }
+
+const copyBtns = document.querySelectorAll('.copy-btn');
+
+copyBtns.forEach((btn) => {
+  btn.addEventListener('click', function () {
+    btn.innerHTML = 'copied';
+  });
+});
